@@ -18,6 +18,8 @@ const message = document.getElementById('message');
 clickBtn.addEventListener('click', () => {
     money += perClick;
     updateDisplay();
+    console.log(`Clicked! Money increased by ${perClick}. Total: ${money}`); // Debug log
+    showMessage(`+$${perClick}`);
 });
 
 // Upgrade click handler
@@ -25,7 +27,7 @@ upgradeClickBtn.addEventListener('click', () => {
     if (money >= clickUpgradeCost) {
         money -= clickUpgradeCost;
         perClick *= 2;
-        clickUpgradeCost *= 3; // Cost increases faster than reward
+        clickUpgradeCost *= 3;
         updateDisplay();
         showMessage('Click power upgraded!');
     } else {
@@ -38,7 +40,7 @@ buyAutoClickerBtn.addEventListener('click', () => {
     if (money >= autoClickerCost) {
         money -= autoClickerCost;
         autoClickers++;
-        autoClickerCost *= 2; // Cost doubles each time
+        autoClickerCost *= 2;
         updateDisplay();
         showMessage('Auto-clicker purchased!');
     } else {
@@ -48,9 +50,12 @@ buyAutoClickerBtn.addEventListener('click', () => {
 
 // Auto-clicker function
 setInterval(() => {
-    money += autoClickers * perClick;
-    updateDisplay();
-}, 1000); // Runs every second
+    if (autoClickers > 0) {
+        money += autoClickers * perClick;
+        updateDisplay();
+        console.log(`Auto-click: +${autoClickers * perClick}. Total: ${money}`); // Debug log
+    }
+}, 1000);
 
 function updateDisplay() {
     moneyDisplay.textContent = money;
@@ -66,7 +71,7 @@ function showMessage(text) {
     message.textContent = text;
     setTimeout(() => {
         message.textContent = '';
-    }, 3000);
+    }, 2000); // Reduced to 2 seconds for quicker feedback
 }
 
 // Initial display update
