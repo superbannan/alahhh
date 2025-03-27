@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Clicker Game</h1>
+        <div id="stats">
+            <p>Money: $<span id="money">0</span></p>
+            <p>Per Click: $<span id="perClick">1</span></p>
+            <p>Auto Clickers: <span id="autoClickers">0</span></p>
+        </div>
+        
+        <button id="clickBtn">Click Me!</button>
+        
+        <div id="controls">
+            <button id="upgradeClickBtn">Upgrade Click ($<span id="clickUpgradeCost">10</span>)</button>
+            <button id="buyAutoClickerBtn">Buy Auto Clicker ($<span id="autoClickerCost">50</span>)</button>
+        </div>
+        
+        <div id="message"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
